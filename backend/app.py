@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
-import pandas as pd
+import polars as pl  # Ganti import pandas dengan polars
 import joblib
 import logging
 
@@ -12,7 +12,7 @@ CORS(app, resources={r"/recommend": {"origins": "*"}})
 
 # Load data and model
 try:
-    data = pd.read_csv("SpotifyFeatures.csv")  # Dataset harus sesuai
+    data = pl.read_csv("SpotifyFeatures.csv")  # Load dataset dengan Polars
     model = joblib.load("model.pkl")  # Pastikan model sudah ada
     logging.info("Model and data loaded successfully.")
 except Exception as e:
@@ -31,7 +31,9 @@ def recommend():
 
         # Proses rekomendasi lagu berdasarkan `user_input`
         recommendations = model.kneighbors([user_input], n_neighbors=5)[1]
-        recommended_songs = data.iloc[recommendations[0]].to_dict(orient="records")
+
+        # Mengambil data rekomendasi dari Polars
+        recommended_songs = data[recommendations[0]].to_dicts()  # Menggunakan to_dicts() untuk mengonversi ke list of dicts
         
         # Mempersiapkan respons dengan CORS
         response = jsonify(recommended_songs)
