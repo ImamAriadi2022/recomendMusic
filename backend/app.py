@@ -10,16 +10,22 @@ logging.basicConfig(level=logging.DEBUG)
 app = Flask(__name__)
 CORS(app, resources={r"/recommend": {"origins": "*"}})
 
-# Load data and model
+# Load data and model globally
+data = None
+model = None
+
 try:
-    data = pl.read_csv("SpotifyFeatures.csv")  # Load dataset dengan Polars
-    model = joblib.load("model.pkl")  # Pastikan model sudah ada
+    # Load dataset dengan Polars
+    data = pl.read_csv("SpotifyFeatures.csv")  
+    # Load model
+    model = joblib.load("model.pkl")  
     logging.info("Model and data loaded successfully.")
 except Exception as e:
     logging.error(f"Error loading model or data: {str(e)}")
 
 @app.route("/recommend", methods=["POST"])
 def recommend():
+    global model  # Memastikan kita menggunakan model global
     try:
         # Memeriksa apakah input ada dan valid
         if "mood" not in request.json:
