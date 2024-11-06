@@ -1,6 +1,6 @@
-Flask==3.0.3 
-Flask-Cors==5.0.0 
-flask-swagger==0.2.14 
+Flask==3.0.3
+Flask-Cors==5.0.0
+flask-swagger==0.2.14
 joblib==1.4.2
-polars==1.12.0 
+polars==1.12.0
 Werkzeug==3.1.2
