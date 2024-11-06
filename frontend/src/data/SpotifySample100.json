@@ -5,10 +5,10 @@
         "track_name": "7 rings",
         "track_id": "0p2T6Fs8pNO9jCUoYQliBT",
         "popularity": 85,
-        "acousticness": 0.34,
+        "acousticness": 0.1,
         "danceability": 0.72,
         "duration_ms": 178847,
-        "energy": 0.8,
+        "energy": 0.2,
         "instrumentalness": 0.0,
         "key": "D",
         "liveness": 0.1,
@@ -17,7 +17,7 @@
         "speechiness": 0.33,
         "tempo": 140.0,
         "time_signature": "4/4",
-        "valence": 0.54
+        "valence": 0.1
     },
     {
         "genre": "Rock",
@@ -28,7 +28,7 @@
         "acousticness": 0.2,
         "danceability": 0.48,
         "duration_ms": 431000,
-        "energy": 0.7,
+        "energy": 0.3,
         "instrumentalness": 0.0,
         "key": "F",
         "liveness": 0.08,
@@ -37,7 +37,7 @@
         "speechiness": 0.03,
         "tempo": 75.0,
         "time_signature": "4/4",
-        "valence": 0.6
+        "valence": 0.2
     },
     {
         "genre": "Jazz",
@@ -45,10 +45,10 @@
         "track_name": "So What",
         "track_id": "1XngknVsO1S2h0kmtc6vgO",
         "popularity": 65,
-        "acousticness": 0.88,
+        "acousticness": 0.3,
         "danceability": 0.33,
         "duration_ms": 545000,
-        "energy": 0.3,
+        "energy": 0.4,
         "instrumentalness": 0.85,
         "key": "G",
         "liveness": 0.15,
@@ -57,7 +57,7 @@
         "speechiness": 0.05,
         "tempo": 132.0,
         "time_signature": "4/4",
-        "valence": 0.25
+        "valence": 0.3
     },
     {
         "genre": "Classical",
@@ -65,10 +65,10 @@
         "track_name": "Symphony No.5",
         "track_id": "4R1dTBGccKP68a9Fv4p9Ft",
         "popularity": 78,
-        "acousticness": 0.9,
+        "acousticness": 0.4,
         "danceability": 0.22,
         "duration_ms": 425000,
-        "energy": 0.65,
+        "energy": 0.5,
         "instrumentalness": 0.98,
         "key": "C",
         "liveness": 0.1,
@@ -77,7 +77,7 @@
         "speechiness": 0.02,
         "tempo": 108.0,
         "time_signature": "4/4",
-        "valence": 0.35
+        "valence": 0.4
     },
     {
         "genre": "Hip-Hop",
@@ -85,10 +85,10 @@
         "track_name": "HUMBLE.",
         "track_id": "2rhFz2WoBlK4Ja2AzyzYGE",
         "popularity": 92,
-        "acousticness": 0.33,
+        "acousticness": 0.5,
         "danceability": 0.77,
         "duration_ms": 177000,
-        "energy": 0.96,
+        "energy": 0.6,
         "instrumentalness": 0.0,
         "key": "G",
         "liveness": 0.34,
@@ -97,7 +97,7 @@
         "speechiness": 0.31,
         "tempo": 150.0,
         "time_signature": "4/4",
-        "valence": 0.36
+        "valence": 0.5
     },
     {
         "genre": "Rock",
@@ -105,10 +105,10 @@
         "track_name": "Bohemian Rhapsody",
         "track_id": "1SBQyl6FVuqW0fVlhCSex5",
         "popularity": 90,
-        "acousticness": 0.4,
+        "acousticness": 0.6,
         "danceability": 0.4,
         "duration_ms": 355000,
-        "energy": 0.65,
+        "energy": 0.7,
         "instrumentalness": 0.0,
         "key": "E",
         "liveness": 0.18,
@@ -117,7 +117,7 @@
         "speechiness": 0.03,
         "tempo": 144.0,
         "time_signature": "4/4",
-        "valence": 0.48
+        "valence": 0.6
     },
     {
         "genre": "Pop",
@@ -125,10 +125,10 @@
         "track_name": "bad guy",
         "track_id": "4aWmUDTfIPGksMNLV2rQP2",
         "popularity": 94,
-        "acousticness": 0.33,
+        "acousticness": 0.7,
         "danceability": 0.7,
         "duration_ms": 194000,
-        "energy": 0.44,
+        "energy": 0.8,
         "instrumentalness": 0.0,
         "key": "A",
         "liveness": 0.1,
@@ -137,7 +137,7 @@
         "speechiness": 0.4,
         "tempo": 135.0,
         "time_signature": "4/4",
-        "valence": 0.56
+        "valence": 0.7
     },
     {
         "genre": "R&B",
@@ -145,10 +145,10 @@
         "track_name": "Thinkin Bout You",
         "track_id": "3SZqWuP1r4I1k3wxSsJnjS",
         "popularity": 85,
-        "acousticness": 0.45,
+        "acousticness": 0.8,
         "danceability": 0.6,
         "duration_ms": 184000,
-        "energy": 0.4,
+        "energy": 0.9,
         "instrumentalness": 0.0,
         "key": "D",
         "liveness": 0.09,
@@ -157,7 +157,7 @@
         "speechiness": 0.1,
         "tempo": 120.0,
         "time_signature": "4/4",
-        "valence": 0.5
+        "valence": 0.8
     },
     {
         "genre": "Jazz",
@@ -165,10 +165,10 @@
         "track_name": "A Love Supreme",
         "track_id": "5h0lgcy46lWQ5Hq8C3hRUt",
         "popularity": 50,
-        "acousticness": 0.88,
+        "acousticness": 0.9,
         "danceability": 0.44,
         "duration_ms": 467000,
-        "energy": 0.5,
+        "energy": 0.1,
         "instrumentalness": 0.9,
         "key": "F",
         "liveness": 0.2,
@@ -177,7 +177,7 @@
         "speechiness": 0.05,
         "tempo": 125.0,
         "time_signature": "4/4",
-        "valence": 0.3
+        "valence": 0.9
     },
     {
         "genre": "Classical",
@@ -185,10 +185,10 @@
         "track_name": "Requiem",
         "track_id": "6mWyfX8AQQ3b5yZzJBBPi3",
         "popularity": 72,
-        "acousticness": 0.95,
+        "acousticness": 1.0,
         "danceability": 0.15,
         "duration_ms": 650000,
-        "energy": 0.45,
+        "energy": 0.2,
         "instrumentalness": 0.98,
         "key": "D",
         "liveness": 0.12,
@@ -197,6 +197,6 @@
         "speechiness": 0.02,
         "tempo": 85.0,
         "time_signature": "4/4",
-        "valence": 0.1
+        "valence": 1.0
     }
 ]
