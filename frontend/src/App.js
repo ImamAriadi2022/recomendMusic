@@ -1,47 +1,53 @@
+// Import dependencies
 import React, { useState } from "react";
-import axios from "axios";
-import "bootstrap/dist/css/bootstrap.min.css"; // Pastikan Anda mengimpor Bootstrap
-import "./App.css"; // Impor file CSS khusus untuk kustomisasi tambahan
+import songsData from "./data/SpotifySample100.json"; // Import static song data
+import "bootstrap/dist/css/bootstrap.min.css"; // Import Bootstrap for styling
+import "./App.css"; // Import custom CSS
 
 function App() {
-    const [mood, setMood] = useState([0, 0, 0]); // Inisialisasi mood dengan nilai default
-    const [songs, setSongs] = useState([]); // Menyimpan lagu rekomendasi
-    const [showSongs, setShowSongs] = useState(false); // Menyimpan status apakah daftar lagu ditampilkan atau tidak
+    const [mood, setMood] = useState([0, 0, 0]); // Initialize mood state
+    const [recommendedSongs, setRecommendedSongs] = useState([]); // State to store recommended songs
+    const [showRecommendations, setShowRecommendations] = useState(false); // State to toggle song list display
 
+    // Handle slider change for each mood parameter
     const handleSliderChange = (index, value) => {
-        const newMood = [...mood];
-        newMood[index] = parseFloat(value); // Memastikan value menjadi float
-        setMood(newMood); // Update mood dengan nilai baru
+        const updatedMood = [...mood];
+        updatedMood[index] = parseFloat(value); // Ensure the value is a float
+        setMood(updatedMood); // Update mood with new value
     };
 
-    const getRecommendations = async () => {
-        if (mood.some(isNaN)) { // Memeriksa apakah ada nilai yang tidak valid
+    // Generate song recommendations based on mood
+    const getRecommendations = () => {
+        if (mood.some(isNaN)) { // Check if any mood value is invalid
             alert("Please ensure all mood values are valid numbers.");
             return;
         }
 
-        try {
-            const response = await axios.post("http://localhost:5000/recommend", {
-                mood: mood, // Mengirimkan array mood
-            });
-            setSongs(response.data); // Mengupdate state dengan lagu rekomendasi
-            setShowSongs(true); // Tampilkan daftar lagu setelah mendapatkan rekomendasi
-        } catch (error) {
-            console.error("Error fetching recommendations:", error);
-        }
+        // Filter songs based on mood criteria
+        const filteredSongs = songsData.filter(song => {
+            const moodMatch = 
+                Math.abs(song.valence - mood[1]) < 0.2 && // Match on happiness (valence)
+                Math.abs(song.energy - mood[2]) < 0.2 &&  // Match on energy
+                Math.abs(song.acousticness - mood[0]) < 0.2; // Match on stress (acousticness)
+            return moodMatch;
+        });
+
+        setRecommendedSongs(filteredSongs.slice(0, 10)); // Limit to top 10 recommendations
+        setShowRecommendations(true); // Show song list after filtering
     };
 
-    const clearSongs = () => {
-        setSongs([]); // Menghapus daftar lagu
-        setShowSongs(false); // Menyembunyikan daftar lagu
+    // Clear song recommendations
+    const clearRecommendations = () => {
+        setRecommendedSongs([]);
+        setShowRecommendations(false);
     };
 
     return (
-        <div className="d-flex justify-content-center align-items-center min-vh-100 bg-dark text-light p-4"> {/* Menambahkan kelas min-vh-100 */}
+        <div className="d-flex justify-content-center align-items-center min-vh-100 bg-dark text-light p-4">
             <div className="container text-center">
-                <h1 className="mb-4">Rekomendasi Musik</h1>
+                <h1 className="mb-4">Rekomendasi Musik Berdasarkan Mood</h1>
 
-                {/* Slider untuk input mood dengan kategori relevan */}
+                {/* Mood input sliders */}
                 <div className="mb-4">
                     <div className="mb-3">
                         <label className="form-label">Tingkat Stres:</label>
@@ -51,10 +57,10 @@ function App() {
                             min="0"
                             max="1"
                             step="0.1"
-                            value={mood[0]} // Menampilkan nilai default
+                            value={mood[0]}
                             onChange={(e) => handleSliderChange(0, e.target.value)}
                         />
-                        <span>{mood[0].toFixed(1)}</span> {/* Menampilkan nilai */}
+                        <span>{mood[0].toFixed(1)}</span>
                     </div>
 
                     <div className="mb-3">
@@ -65,10 +71,10 @@ function App() {
                             min="0"
                             max="1"
                             step="0.1"
-                            value={mood[1]} // Menampilkan nilai default
+                            value={mood[1]}
                             onChange={(e) => handleSliderChange(1, e.target.value)}
                         />
-                        <span>{mood[1].toFixed(1)}</span> {/* Menampilkan nilai */}
+                        <span>{mood[1].toFixed(1)}</span>
                     </div>
 
                     <div className="mb-3">
@@ -79,33 +85,36 @@ function App() {
                             min="0"
                             max="1"
                             step="0.1"
-                            value={mood[2]} // Menampilkan nilai default
+                            value={mood[2]}
                             onChange={(e) => handleSliderChange(2, e.target.value)}
                         />
-                        <span>{mood[2].toFixed(1)}</span> {/* Menampilkan nilai */}
+                        <span>{mood[2].toFixed(1)}</span>
                     </div>
                 </div>
 
+                {/* Buttons for generating recommendations and clearing list */}
                 <button className="btn btn-outline-light" onClick={getRecommendations}>
-                    Mencari Rekomendasi
+                    Cari Rekomendasi
                 </button>
                 
-                <button className="btn btn-danger ms-2" onClick={clearSongs}>
-                    Clear List
+                <button className="btn btn-danger ms-2" onClick={clearRecommendations}>
+                    Hapus List
                 </button>
 
-                {/* Tampilkan daftar lagu jika ada */}
-                {showSongs && (
+                {/* Display song recommendations if available */}
+                {showRecommendations && recommendedSongs.length > 0 ? (
                     <div className="mt-4">
-                        <h2>List Musik:</h2>
+                        <h2>List Musik Rekomendasi:</h2>
                         <ul className="list-group list-group-flush">
-                            {songs.map((song, index) => (
+                            {recommendedSongs.map((song, index) => (
                                 <li key={index} className="list-group-item bg-secondary text-light">
                                     {song.track_name} by {song.artist_name}
                                 </li>
                             ))}
                         </ul>
                     </div>
+                ) : showRecommendations && (
+                    <p className="mt-4 text-warning">Tidak ada rekomendasi yang cocok dengan mood saat ini.</p>
                 )}
             </div>
         </div>

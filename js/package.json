@@ -16,6 +16,9 @@
     "cors": "^2.8.5",
     "csv-parser": "^3.0.0",
     "express": "^4.21.1",
+    "fs": "^0.0.1-security",
+    "mathjs": "^13.2.0",
+    "ml-knn": "^3.0.0",
     "node-fetch": "^3.3.2",
     "undici": "^6.20.1"
   }
